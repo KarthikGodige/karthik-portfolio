@@ -1,8 +1,7 @@
-
 const skillGroups = [
   {
     title: "Programming Languages",
-    skills: ["Java", "Python", "C", "C++"],
+    skills: ["Python", "Java", "C", "C++", "JavaScript"],
   },
   {
     title: "Frontend Development",
@@ -14,15 +13,15 @@ const skillGroups = [
   },
   {
     title: "Databases",
-    skills: ["MongoDB", "MySQL", "Oracle", "SQL"],
+    skills: ["MySQL", "MongoDB", "Oracle", "SQL", "SQLite"],
   },
   {
     title: "Data & Machine Learning",
     skills: [
       "Pandas",
       "NumPy",
-      "Matplotlib",
       "Scikit-learn",
+      "OpenCV",
       "TF-IDF",
       "Data Analysis",
     ],

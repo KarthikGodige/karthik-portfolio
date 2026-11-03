@@ -1,11 +1,10 @@
-
 const learningAreas = [
   {
     number: "01",
     title: "Full Stack Development",
     status: "Currently learning",
     description:
-      "Developing full-stack applications using React, Node.js, Express, MongoDB, and authentication.",
+      "Developing full-stack applications using React, Node.js, Express, MongoDB, and MySQL.",
     technologies: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
@@ -14,15 +13,15 @@ const learningAreas = [
     status: "Currently learning",
     description:
       "Strengthening problem-solving skills through data structures, algorithms, and coding challenges.",
-    technologies: ["Java", "DSA", "Problem Solving"],
+    technologies: ["Java", "Python", "DSA", "Problem Solving"],
   },
   {
     number: "03",
     title: "AI & Machine Learning",
     status: "Currently learning",
     description:
-      "Building foundations in Python, data science, machine learning, and artificial intelligence.",
-    technologies: ["Python", "Pandas", "Machine Learning"],
+      "Building foundations in Python, data science, machine learning, and computer vision.",
+    technologies: ["Python", "Pandas", "Scikit-learn", "OpenCV"],
   },
   {
     number: "04",
@@ -30,30 +29,34 @@ const learningAreas = [
     status: "Building",
     description:
       "Applying technical knowledge by creating practical applications and improving portfolio projects.",
-    technologies: ["React", "Python", "Project Building"],
+    technologies: ["React", "Python", "Full Stack", "Project Building"],
   },
 ];
 
 const metrics = [
   {
     icon: "01",
-    title: "Coding Streak",
-    description: "Daily activity tracking",
+    metric: "392K+",
+    title: "Records Processed",
+    description: "Retail transactions analyzed and clustered",
   },
   {
     icon: "02",
-    title: "DSA Problems",
-    description: "Solved problem count",
+    metric: "5,197",
+    title: "Books Indexed",
+    description: "TF-IDF NLP recommendation matrix",
   },
   {
     icon: "03",
-    title: "Coding Hours",
-    description: "Time spent learning",
+    metric: "6 Mos",
+    title: "Industrial Training",
+    description: "Software Development at AIML Services",
   },
   {
     icon: "04",
-    title: "Project Progress",
-    description: "Development milestones",
+    metric: "3rd",
+    title: "Hackathon Prize",
+    description: "AI Academic Management prototype",
   },
 ];
 
@@ -66,7 +69,7 @@ function DailyProgress() {
           <h2>Always learning. Always building.</h2>
           <p>
             A snapshot of the areas I'm currently exploring and
-            the skills I'm developing.
+            the milestones achieved so far.
           </p>
         </div>
 
@@ -99,29 +102,20 @@ function DailyProgress() {
         <div className="progress-dashboard">
           <div className="progress-dashboard-heading">
             <div>
-              <p className="section-label">ACTIVITY TRACKER</p>
-              <h3>My progress dashboard.</h3>
+              <p className="section-label">KEY STATS</p>
+              <h3>Project &amp; Learning Highlights</h3>
             </div>
-            <span className="dashboard-label">Coming soon</span>
           </div>
 
           <div className="progress-metrics">
             {metrics.map((metric) => (
               <article className="progress-metric" key={metric.title}>
-                <span className="metric-number">{metric.icon}</span>
+                <span className="metric-number">{metric.metric}</span>
                 <h4>{metric.title}</h4>
                 <p>{metric.description}</p>
-                <span className="metric-pending">
-                  Data not connected
-                </span>
               </article>
             ))}
           </div>
-
-          <p className="dashboard-note">
-            Coding activity, learning streaks, and project statistics
-            will be displayed here once connected to real data sources.
-          </p>
         </div>
       </div>
     </section>

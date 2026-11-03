@@ -1,4 +1,3 @@
-
 const achievements = [
   {
     number: "01",
@@ -35,7 +34,7 @@ function Achievements() {
     <section id="achievements" className="achievements-section">
       <div className="section-container">
         <div className="section-heading">
-          <p className="section-label">RECOGNITION & MILESTONES</p>
+          <p className="section-label">RECOGNITION &amp; MILESTONES</p>
           <h2>Work worth celebrating.</h2>
           <p>
             Highlights from hackathons, engineering ideas, and

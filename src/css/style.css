@@ -1470,6 +1470,149 @@ section p {
   }
 }
 
+/* ==========================================
+   PREMIUM PROJECT CARD ANIMATIONS
+========================================== */
+
+.projects-compact-grid {
+  perspective: 1200px;
+}
+
+.project-compact-card {
+  opacity: 0;
+  filter: none;
+  transform: translateY(35px) scale(0.98);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.project-compact-card.is-visible {
+  opacity: 1;
+  filter: none;
+  transform: translateY(0) scale(1);
+}
+/* Cursor-following spotlight */
+
+.project-compact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(240, 120, 67, 0.12),
+    transparent 65%
+  );
+
+  transition: opacity 0.35s ease;
+}
+
+.project-compact-card:hover::before {
+  opacity: 1;
+}
+
+/* Animated orange border */
+/* Animated orange border */
+
+.project-compact-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--accent);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-compact-card:hover::after {
+  opacity: 1;
+}
+.project-compact-card:hover::after {
+  opacity: 1;
+}
+
+/* Hover lift */
+
+.project-compact-card.is-visible:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* Project title interaction */
+
+.project-compact-card .compact-title {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project-compact-card:hover .compact-title {
+  color: var(--accent-dark);
+  transform: translateX(4px);
+}
+
+/* Technology tags */
+
+.project-compact-card .compact-tech-pill {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.project-compact-card:hover .compact-tech-pill {
+  border-color: rgba(240, 120, 67, 0.25);
+}
+
+.project-compact-card:hover .compact-tech-pill:hover {
+  transform: translateY(-3px);
+  background: var(--accent-soft);
+}
+
+/* GitHub button */
+
+.project-compact-card .project-github-btn {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.project-compact-card .project-github-btn:hover {
+  transform: translateY(-3px);
+}
+
+.project-compact-card .github-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.project-compact-card .project-github-btn:hover .github-arrow {
+  transform: translate(4px, -4px);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-compact-card {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .project-compact-card::before,
+  .project-compact-card::after {
+    display: none;
+  }
+}
+
 
 /* =========================================================
    08. EXPERIENCE
@@ -4312,4 +4455,771 @@ select:focus-visible {
 
 #coding-profiles {
   padding-top: 35px;
+}
+
+
+
+
+/* =========================================================
+   20. CLEAN COMPACT CARDS & REVERTED ORIGINAL FONTS
+   ========================================================= */
+
+/* Ensure clean original font stack across all text elements */
+:root, body, h1, h2, h3, h4, h5, h6, button, input, textarea, a, span {
+  font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Compact Projects Grid & Cards (similar to Ram's portfolio) */
+.projects-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.project-compact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.project-compact-card:hover {
+  transform: translateY(-3px);
+  border-color: #d0d0cb;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.compact-number {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.compact-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.compact-status-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: #f0f0ed;
+  color: var(--muted);
+  border-radius: 999px;
+}
+
+.compact-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.compact-desc {
+  font-size: 0.88rem;
+  color: #555550;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  display: -webkit-box;
+ -webkit-line-clamp: 3;
+line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.compact-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.compact-tech-pill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #f3f3f0;
+  color: #333330;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.compact-card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0ed;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.compact-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.compact-link-btn:hover {
+  color: var(--accent-dark);
+  transform: translateX(2px);
+}
+
+/* Compact Education Cards (similar to Ram's portfolio) */
+.education-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.education-compact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.education-compact-card:hover {
+  transform: translateY(-2px);
+  border-color: #d0d0cb;
+}
+
+.edu-compact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.edu-compact-num {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.edu-compact-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.edu-compact-badge.badge-active {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.edu-compact-badge.badge-done {
+  background: #eafaf1;
+  color: #1a7f4b;
+}
+
+.edu-compact-degree {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 4px;
+}
+
+.edu-compact-inst {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 2px;
+}
+
+.edu-compact-field {
+  font-size: 0.82rem;
+  color: #777772;
+  margin: 0 0 14px;
+}
+
+.edu-compact-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0ed;
+}
+
+.edu-compact-score {
+  font-weight: 600;
+  color: var(--dark);
+  background: #f7f7f5;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.edu-compact-btn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #ffd8c7;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  width: 100%;
+}
+
+.edu-compact-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Contact Direct Row & Copy Button */
+.contact-direct-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 6px;
+}
+
+.contact-email-link,
+.contact-phone-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.contact-email-link:hover,
+.contact-phone-link:hover {
+  color: var(--accent);
+}
+
+.copy-pill-btn {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  background: #f0f0ed;
+  border: 1px solid #dcdcd6;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.copy-pill-btn:hover {
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.contact-social-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.contact-social-pills a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact-social-pills a:hover {
+  border-color: var(--dark);
+}
+
+@media (max-width: 640px) {
+  .projects-compact-grid,
+  .education-compact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   21. CARD ANIMATIONS & LINKEDIN AVATAR STYLES
+   ========================================================= */
+
+/* Staggered smooth entrance reveal */
+.reveal {
+  transition-delay: calc(var(--reveal-index, 0) * 65ms);
+}
+
+/* Projects Card Animations */
+.project-compact-card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+  will-change: transform, box-shadow;
+}
+
+.project-compact-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(240, 120, 67, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.compact-link-btn span:last-child {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+
+.project-compact-card:hover .compact-link-btn span:last-child {
+  transform: translate(3px, -3px);
+}
+
+.compact-tech-pill {
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.compact-tech-pill:hover {
+  transform: translateY(-2px);
+  background: #e8e8e2;
+}
+
+/* Internship / Experience Timeline Animations */
+.experience-card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+  border-color: #d0d0cb;
+}
+
+.experience-marker span {
+  animation: markerGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes markerGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(240, 120, 67, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(240, 120, 67, 0);
+    transform: scale(1.12);
+  }
+}
+
+.experience-highlight {
+  transition: transform 220ms ease, background 220ms ease;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-left: -12px;
+}
+
+.experience-highlight:hover {
+  transform: translateX(6px);
+  background: rgba(240, 120, 67, 0.06);
+}
+
+.certificate-button {
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.certificate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(240, 120, 67, 0.25);
+}
+
+/* Education Cards Animations */
+.education-compact-card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+  will-change: transform, box-shadow;
+}
+
+.education-compact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.07);
+  border-color: #d0d0cb;
+}
+
+.edu-compact-score {
+  transition: transform 200ms ease, background 200ms ease, color 200ms ease;
+}
+
+.education-compact-card:hover .edu-compact-score {
+  transform: scale(1.05);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.edu-compact-btn {
+  transition: transform 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.edu-compact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(240, 120, 67, 0.2);
+}
+
+/* LinkedIn Profile Picture in Coding Profile */
+.coding-profile-card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+}
+
+.coding-profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.07);
+  border-color: #d0d0cb;
+}
+
+.linkedin-avatar-badge {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.linkedin-user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0a66c2;
+  box-shadow: 0 3px 10px rgba(10, 102, 194, 0.25);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.linkedin-corner-icon {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 17px;
+  height: 17px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+}
+
+.linkedin-corner-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.coding-profile-card:hover .linkedin-user-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.4);
+}
+
+
+/* =========================================================
+   22. HERO STATUS PILL, PROJECT ANIMATIONS & CURSOR EFFECTS
+   ========================================================= */
+
+/* Hero Status Pill */
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #eafaf1;
+  border: 1px solid #a3e9c4;
+  color: #1a7f4b;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.live-status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  animation: pulse-green 2s infinite ease-in-out;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.1);
+  }
+}
+
+/* Projects Card - Achievement Style Top-Bar Animation */
+.project-compact-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-compact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+  z-index: 2;
+}
+
+.project-compact-card:hover {
+  transform: scale(1.03) translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(35, 30, 25, 0.10);
+  z-index: 2;
+}
+
+.project-compact-card:hover::before {
+  width: 100%;
+}
+
+/* GitHub Button Below Project Card */
+.project-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #f6f6f4;
+  border: 1px solid #e2e2dd;
+  border-radius: 6px;
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.github-svg-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.project-github-btn .github-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.project-github-btn:hover {
+  background: var(--dark);
+  color: #ffffff;
+  border-color: var(--dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-github-btn:hover .github-svg-icon {
+  transform: scale(1.12);
+}
+
+.project-github-btn:hover .github-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* Custom Cursor & Interactive Card Glow */
+.custom-cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: opacity 0.2s ease, transform 0.05s linear;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(240, 120, 67, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: width 0.25s ease, height 0.25s ease, top 0.25s ease, left 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.1s ease-out;
+}
+
+.custom-cursor-ring.is-card-hover {
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  border-color: var(--accent);
+  background: rgba(240, 120, 67, 0.12);
+  box-shadow: 0 0 20px rgba(240, 120, 67, 0.3);
+}
+
+.custom-cursor-ring.is-pointer:not(.is-card-hover) {
+  top: -14px;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  background: rgba(240, 120, 67, 0.1);
+}
+
+/* Card Mouse Spotlight Effect */
+.interactive-card {
+  position: relative;
+}
+
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(240, 120, 67, 0.08), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.interactive-card:hover::after {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   23. FOOTER COMPACT RESIZE, LINKEDIN PIC & CURSOR SHINE
+   ========================================================= */
+
+/* Reduce footer size */
+.site-footer {
+  padding: 34px 24px 18px !important;
+}
+
+.footer-main {
+  padding-bottom: 24px !important;
+  gap: 32px !important;
+}
+
+.footer-logo {
+  font-size: 28px !important;
+}
+
+.footer-brand p {
+  font-size: 13px !important;
+  margin-top: 6px !important;
+}
+
+.footer-heading {
+  font-size: 11px !important;
+  margin-bottom: 12px !important;
+}
+
+.footer-navigation nav a,
+.footer-social a {
+  font-size: 13px !important;
+  margin-bottom: 6px !important;
+}
+
+.footer-bottom {
+  padding-top: 18px !important;
+  font-size: 12px !important;
+}
+
+/* Uploaded LinkedIn Picture */
+.linkedin-uploaded-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 6px rgba(10, 102, 194, 0.25);
+  transition: transform 0.25s ease;
+}
+
+.coding-profile-card:hover .linkedin-uploaded-pic {
+  transform: scale(1.12);
+}
+
+/* Remove old circle cursor */
+.custom-cursor-dot,
+.custom-cursor-ring {
+  display: none !important;
+}
+
+/* Soft borderless luminous cursor shine aura */
+.cursor-shine-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  pointer-events: none;
+  z-index: 9999;
+
+  background: radial-gradient(
+    circle,
+    rgba(240, 120, 67, 0.10) 0%,
+    rgba(240, 120, 67, 0.045) 35%,
+    transparent 100%
+  );
+
+  filter: blur(8px);
+  opacity: 0.45;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+.cursor-shine-aura.is-active {
+  width: 125px;
+  height: 125px;
+  opacity: 0.75;
+}
+
+/* Card Surface Spotlight Shine */
+.interactive-card {
+  position: relative;
+}
+
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(240, 120, 67, 0.13), rgba(255, 255, 255, 0.08) 35%, transparent 72%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.interactive-card:hover::after {
+  opacity: 1;
 }

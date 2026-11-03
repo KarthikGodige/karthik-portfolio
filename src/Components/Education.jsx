@@ -1,25 +1,24 @@
-
 import { useState } from "react";
 
 const education = [
   {
     number: "01",
-    degree: "Bachelor of Technology",
-    field: "Computer Science and Design",
+    degree: "Bachelor of Technology (B.Tech)",
+    field: "Computer Science and Data Science",
     institution: "Vardhaman College of Engineering",
     period: "2025 – 2028",
-    score: "8.35",
+    score: "8.37",
     scoreLabel: "CGPA",
     status: "Currently Pursuing",
-    certificate: "/certificates/btech.jpg",
+    certificate: null,
   },
   {
     number: "02",
-    degree: "Diploma in Computer Science and Engineering",
+    degree: "Diploma in Computer Science & Engineering",
     field: "Computer Science and Engineering",
     institution: "Government Polytechnic, Nalgonda",
-    period: "Completed in 2025",
-    score: "9.29",
+    period: "2022 – 2025",
+    score: "9.20",
     scoreLabel: "CGPA",
     status: "Completed",
     certificate: "/certificates/diploma-certificate.jpeg",
@@ -29,9 +28,9 @@ const education = [
     degree: "Secondary Education (SSC)",
     field: "School Education",
     institution: "MJPTBCWRS (Boys), Telkapally",
-    period: "Completed in 2022",
+    period: "Completed 2022",
     score: "9.7",
-    scoreLabel: "CGPA",
+    scoreLabel: "GPA",
     status: "Completed",
     certificate: "/certificates/ssc-certificate.jpeg",
   },
@@ -51,44 +50,36 @@ function Education() {
           </p>
         </div>
 
-        <div className="education-list">
+        <div className="education-compact-grid">
           {education.map((item) => (
-            <article className="education-card" key={item.number}>
-              <div className="education-icon">
-                <span>🎓</span>
+            <article className="education-compact-card" key={item.number}>
+              <div className="edu-compact-header">
+                <span className="edu-compact-num">{item.number}</span>
+                <span className={`edu-compact-badge ${item.status === "Completed" ? "badge-done" : "badge-active"}`}>
+                  {item.status}
+                </span>
               </div>
 
-              <div className="education-details">
-                <div className="education-card-top">
-                  <span className="education-number">{item.number}</span>
-                  <span className="education-status">{item.status}</span>
-                </div>
+              <h3 className="edu-compact-degree">{item.degree}</h3>
+              <p className="edu-compact-inst">{item.institution}</p>
+              <p className="edu-compact-field">{item.field}</p>
 
-                <h3>{item.degree}</h3>
+              <div className="edu-compact-meta">
+                <span className="edu-compact-period">{item.period}</span>
+                <span className="edu-compact-score">
+                  {item.scoreLabel}: <strong>{item.score}</strong>
+                </span>
+              </div>
 
-                <p className="education-institution">
-                  {item.institution}
-                </p>
-
-                <p className="education-field">{item.field}</p>
-
-                <div className="education-meta">
-                  <span className="education-period">{item.period}</span>
-                  <span className="education-score">
-                    {item.scoreLabel}: {item.score}
-                  </span>
-                  <span className="education-completed">
-                    {item.status}
-                  </span>
-                </div>
-
+              {item.certificate && (
                 <button
-                  className="certificate-button"
+                  type="button"
+                  className="edu-compact-btn"
                   onClick={() => setSelectedCertificate(item)}
                 >
                   View Certificate ↗
                 </button>
-              </div>
+              )}
             </article>
           ))}
         </div>
@@ -111,7 +102,7 @@ function Education() {
               ×
             </button>
 
-            <h3>{selectedCertificate.degree}</h3>
+            <p className="certificate-modal-title">{selectedCertificate.degree}</p>
 
             <img
               src={selectedCertificate.certificate}

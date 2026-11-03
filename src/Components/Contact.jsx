@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 function Contact() {
@@ -7,10 +6,16 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("karthikgodige7@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormData((previousData) => ({
       ...previousData,
       [name]: value,
@@ -28,8 +33,7 @@ function Contact() {
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
 
-    window.location.href =
-      `mailto:karthikgodige7@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:karthikgodige7@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -52,25 +56,46 @@ function Contact() {
             </p>
 
             <div className="contact-direct">
-              <span className="contact-direct-label">
-                FIND ME ONLINE
-              </span>
+              <span className="contact-direct-label">DIRECT CONTACT</span>
 
-              <a
-                href="https://github.com/KarthikGodige"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub <span>↗</span>
+              <div className="contact-direct-row">
+                <a href="mailto:karthikgodige7@gmail.com" className="contact-email-link">
+                  ✉️ karthikgodige7@gmail.com
+                </a>
+                <button type="button" className="copy-pill-btn" onClick={copyEmail}>
+                  {copied ? "Copied! ✓" : "Copy"}
+                </button>
+              </div>
+
+              <a href="tel:+916302946948" className="contact-phone-link">
+                📞 +91 6302946948
               </a>
 
-              <a
-                href="https://www.linkedin.com/in/godige-karthik-b6353b368/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn <span>↗</span>
-              </a>
+              <div className="contact-social-pills">
+                <a
+                  href="https://github.com/KarthikGodige"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub <span>↗</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/godige-karthik-b6353b368/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn <span>↗</span>
+                </a>
+
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Résumé <span>↗</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -127,7 +152,6 @@ function Contact() {
               <p className="contact-form-note">
                 Your email application will open with your message ready.
               </p>
-              
             </form>
           </div>
         </div>

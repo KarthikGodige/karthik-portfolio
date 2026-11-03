@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 
 import Navbar from "./Components/Navbar";
@@ -13,11 +12,12 @@ import CodingProfiles from "./Components/CodingProfiles";
 import DailyProgress from "./Components/DailyProgress";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
+//import CursorEffect from "./Components/CursorEffect";
 
 function App() {
   useEffect(() => {
     const revealElements = document.querySelectorAll(
-      ".section-label, .about-card, .project-card, .skill-card, .achievement-card, .education-card, .coding-profile-card, .learning-card, .progress-metric, .contact-form-wrapper"
+      ".section-label, .about-card, .project-card, .project-compact-card, .skill-card, .achievement-card, .education-card, .education-compact-card, .experience-card, .coding-profile-card, .learning-card, .progress-metric, .contact-form-wrapper"
     );
 
     if (!("IntersectionObserver" in window)) {
@@ -36,11 +36,12 @@ function App() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
 
-    revealElements.forEach((element) => {
+    revealElements.forEach((element, index) => {
       element.classList.add("reveal");
+      element.style.setProperty("--reveal-index", index % 6);
       observer.observe(element);
     });
 
@@ -49,6 +50,7 @@ function App() {
 
   return (
     <>
+      
       <Navbar />
 
       <main>

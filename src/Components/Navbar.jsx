@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 function Navbar() {
@@ -8,8 +7,10 @@ function Navbar() {
 
   const links = [
     { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
     { label: "Work", href: "#projects" },
-    { label: "Journey", href: "#experience" },
+    { label: "Experience", href: "#experience" },
+    { label: "Education", href: "#education" },
   ];
 
   return (
@@ -50,6 +51,15 @@ function Navbar() {
               {link.label}
             </a>
           ))}
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMenu}
+          >
+            Résumé ↗
+          </a>
 
           <a
             href="#contact"

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 function Experience() {
@@ -9,19 +8,19 @@ function Experience() {
       number: "01",
       title: "Software Development",
       description:
-        "Received practical exposure to software development during industrial training.",
+        "Contributed to the full development lifecycle, translating specifications into modular application components.",
     },
     {
       number: "02",
-      title: "Quiz System",
+      title: "Quiz System Architecture",
       description:
-        "Completed a Quiz System project as part of the training program.",
+        "Architected an enterprise Quiz System project with dynamic question retrieval, user sessions, and database persistence.",
     },
     {
       number: "03",
-      title: "Technical Learning",
+      title: "Database & Backend Engineering",
       description:
-        "Gained practical experience working on a software development project.",
+        "Designed relational database schemas in MySQL, optimized queries, and applied clean code practices under mentorship.",
     },
   ];
 
@@ -47,41 +46,26 @@ function Experience() {
 
             <div className="experience-content">
               <div className="experience-topline">
-                <span className="experience-type">
-                  INDUSTRIAL TRAINING
-                </span>
-                <span className="experience-duration">
-                  6 MONTHS
-                </span>
+                <span className="experience-type">INDUSTRIAL TRAINING</span>
+                <span className="experience-duration">6 MONTHS</span>
               </div>
 
               <h3>Software Development Trainee</h3>
 
-              <h4 className="experience-company">
-                AIML Services Pvt. Ltd.
-              </h4>
+              <h4 className="experience-company">AIML Services Pvt. Ltd.</h4>
 
               <p className="experience-date">
                 18 November 2024 — 17 May 2025 · Hyderabad
               </p>
 
               <p className="experience-summary">
-                Completed six months of industrial training in
-                Software Development, gaining practical exposure
-                and completing a Quiz System project as part of
-                the training program.
+                Completed six months of intensive industrial training in Software Development, gaining hands-on exposure to modular software engineering, MySQL database design, and completing the Quiz System project.
               </p>
 
               <div className="experience-highlights">
                 {highlights.map((item) => (
-                  <div
-                    className="experience-highlight"
-                    key={item.number}
-                  >
-                    <span className="highlight-symbol">
-                      {item.number}
-                    </span>
-
+                  <div className="experience-highlight" key={item.number}>
+                    <span className="highlight-symbol">{item.number}</span>
                     <div>
                       <strong>{item.title}</strong>
                       <p>{item.description}</p>
