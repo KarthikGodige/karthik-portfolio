@@ -19,7 +19,7 @@ const profiles = [
     number: "03",
     name: "LeetCode",
     description: "DSA practice, algorithmic problem solving, and coding practice.",
-    link: "https://github.com/KarthikGodige",
+    link: "https://leetcode.com/u/godigekarthik07/",
     available: true,
   },
   {

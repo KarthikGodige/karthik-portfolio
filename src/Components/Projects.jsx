@@ -11,7 +11,7 @@ const projects = [
     technologies: ["Python", "Pandas", "Scikit-learn", "Streamlit", "Apriori"],
     status: "Completed",
     symbol: "◈",
-    github: "https://github.com/KarthikGodige",
+    github: "https://github.com/KarthikGodige/Smart_Retail_Data_Mining",
   },
   {
     number: "02",
@@ -23,7 +23,7 @@ const projects = [
     status: "Verified Code",
     symbol: "◎",
     github:
-      "https://github.com/KarthikGodige/ATTENDANCE-USING-FACE-RECOGNITION",
+      "https://github.com/KarthikGodige/Face-Recognition-Attendance-System",
   },
   {
     number: "03",
